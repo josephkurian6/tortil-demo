@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="Joseph" id="changelog-1.1">
+        <loadUpdateData encoding="UTF-8"
+                        file="${file.path.banks}"
+                        primaryKey="id"
+                        quotchar='"'
+                        schemaName="public"
+                        separator=","
+                        tableName="banks">
+            <column name="name" type="STRING"/>
+            <column name="id" type="NUMERIC"/>
+        </loadUpdateData>
+        <loadUpdateData encoding="UTF-8"
+                        file="${file.path.branches}"
+                        primaryKey="id"
+                        quotchar='"'
+                        schemaName="public"
+                        separator=","
+                        tableName="branches">
+            <column name="ifsc" type="STRING"/>
+            <column name="bank_id" type="NUMERIC"/>
+            <column name="branch" type="STRING"/>
+            <column name="address" type="STRING"/>
+            <column name="city" type="STRING"/>
+            <column name="district" type="STRING"/>
+            <column name="state" type="STRING"/>
+        </loadUpdateData>
+        <rollback>
+            <sql> truncate table bank cascade; </sql>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

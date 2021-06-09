@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="Joseph" id="changelog-1.0">
+        <createTable tableName="banks">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="branches">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="ifsc" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="branch" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="varchar(255)">
+            </column>
+            <column name="city" type="varchar(255)">
+            </column>
+            <column name="district" type="varchar(255)">
+            </column>
+            <column name="state" type="varchar(255)">
+            </column>
+            <column name="bank_id" type="serial">
+                <constraints nullable="false"
+                             foreignKeyName="fk_bank_branch"
+                             references="banks(id)"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="bank"/>
+            <dropTable tableName="branches"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
