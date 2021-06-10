@@ -34,6 +34,11 @@ Test using: junit<br>
 To build docker image using maven<br>
 Build and push to registry: mvn compile jib:build
 
+## API Document
+
+You can access the API definiton using swagger.<br>
+Go to URL: http://localhost:port/swagger-ui/#/
+
 ## Reference Documentation
 For further reference, please consider the following sections:
 
