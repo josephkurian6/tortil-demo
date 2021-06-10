@@ -27,12 +27,12 @@ You can build a docker image and push to a docker registry without installing th
 ```
 
 ## Build and Test
-1. To run the application using maven
-Build and run using: mvn spring-boot:run
-2. Test using: junit
+To run the application using maven<br>
+Build and run using: mvn spring-boot:run<br>
+Test using: junit<br>
 
-To build docker image using maven
-3. Build and push to registry: mvn compile jib:build
+To build docker image using maven<br>
+Build and push to registry: mvn compile jib:build
 
 ## Reference Documentation
 For further reference, please consider the following sections:
